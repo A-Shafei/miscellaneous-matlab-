@@ -1,0 +1,25 @@
+clear;
+clc;
+
+x = input("Enter your array:");
+k = input("Enter your key:");
+
+found = 0;
+finds = [];
+
+for i=1:length(x)
+    if x(i) == k
+        found = 1;
+        finds(end+1) = i;
+    end
+end
+
+if found == 1
+    disp("Value is found at:");
+else 
+    disp("Not Found");
+end
+
+for i=1:length(finds)
+    disp(finds(i));
+end

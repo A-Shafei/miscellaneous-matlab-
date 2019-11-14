@@ -1,0 +1,58 @@
+clear;
+clc;
+
+x = input("Enter list of grades: ");
+fudged = x;
+nInvalids = 0;
+valids = [];
+total = 0;
+highest = -1;
+lowest = 101;
+
+
+for i=1:length(fudged)
+    if fudged(i) < 0 || fudged(i) > 100
+        nInvalids = nInvalids + 1;
+        fprintf('%i', fudged(i));
+        fprintf(' is Invalid\n');
+        fudged(i) = 0;
+    else
+        fprintf('%i', fudged(i));
+        fprintf(' is Valid\n');
+        valids(end+1) = fudged(i);
+        fudged(i) = 1;
+    end
+end
+
+disp(' ');
+disp("Number of invalid grades: ");
+disp(nInvalids);
+
+disp("Correspondance array is: ");
+disp(fudged);
+
+for i=1:length(valids)
+    total = total + valids(i);
+    if valids(i) > highest
+        highest = valids(i);
+        iHighest = i;
+    end
+    if valids(i) < lowest
+        lowest = valids(i);
+        iLowest = i;
+    end
+end
+
+disp("Average is: ");
+disp(total/length(valids));
+
+if length(valids) ~= 0
+    disp("The highest grade is:");
+    disp(highest);
+    disp("and is found at:");
+    disp(iHighest);
+    disp("The lowest grade is:");
+    disp(lowest);
+    disp("and is found at:");
+    disp(iLowest);
+end
